@@ -21,9 +21,9 @@ func _on_connected():
 func _on_data_received(data):
 	var node = get_node("Panel/VBoxContainer/TextEdit")
 	var text = node.get_text()
-	node.set_text(text + "\n" + data)
-	node.cursor_set_line(node.get_line_count(), true)
-	node.cursor_set_column(0)
+	node.set_text(data + "\n" + text)
+	#node.cursor_set_line(node.get_line_count(), true)
+	#node.cursor_set_column(0)
 
 func _on_ConnectDisconnect_pressed():
 	var a = global
