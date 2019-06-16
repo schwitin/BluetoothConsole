@@ -12,17 +12,17 @@ func _ready():
 	global.connect("disconnected", self, "_on_disconnected")
 	global.connect("data_received", self, "_on_data_received")
 	
-	textEdit = get_node("Panel/HBoxContainer/VBoxContainer/TextEdit")
-	textEdit.set_wrap(true)
+	textEdit = get_node("HBoxContainer/VBoxContainer/TextEdit")
+	textEdit.wrap_enabled = true
 	textEdit.set_readonly(true)
 	
-	fileDialog = get_node("Panel/HBoxContainer/VBoxFile/FileDialog")
+	fileDialog = get_node("FileDialog")
 	fileDialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
 	
-	itemList = get_node("Panel/HBoxContainer/VBoxFile/ScrollContainer/ItemList")
-	lineEdit = get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/LineEdit")
-	btnConnectDisconnect = get_node("Panel/HBoxContainer/VBoxContainer/ConnectDisconnect")
-	btnSenden = get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/Senden")
+	itemList = get_node("HBoxContainer/VBoxFile/ScrollContainer/ItemList")
+	lineEdit = get_node("HBoxContainer/VBoxContainer/HBoxContainer/LineEdit")
+	btnConnectDisconnect = get_node("HBoxContainer/VBoxContainer/ConnectDisconnect")
+	btnSenden = get_node("HBoxContainer/VBoxContainer/HBoxContainer/Senden")
 
 
 func _on_disconnected():

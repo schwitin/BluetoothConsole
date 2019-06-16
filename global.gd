@@ -7,10 +7,12 @@ signal data_received
 var bluetooth
 
 func _ready():
-	if(Globals.has_singleton("GodotBluetooth")):
-		bluetooth = Globals.get_singleton("GodotBluetooth")
-		bluetooth.init(get_instance_ID(), false)
-	pass
+	if(Engine.has_singleton("GodotBluetooth")):
+		bluetooth = Engine.get_singleton("GodotBluetooth")
+		bluetooth.init(get_instance_id(), true)
+		print("---------BT OK -------------")
+	else:
+		print("---------BT NOT INITIALIZED -------------")
 
 #GodotBluetooth Callbacks
 func _on_connected(device_name, device_adress):

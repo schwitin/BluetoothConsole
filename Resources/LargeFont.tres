@@ -1,11 +1,7 @@
-[gd_resource type="DynamicFont" load_steps=2 format=1]
+[gd_resource type="DynamicFont" load_steps=2 format=2]
 
 [ext_resource path="res://Resources/DejaVuSans.ttf" type="DynamicFontData" id=1]
 
 [resource]
-
-font/size = 50
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 1 )
-
+size = 39
+font_data = ExtResource( 1 )
