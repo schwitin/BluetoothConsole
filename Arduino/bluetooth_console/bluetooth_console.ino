@@ -8,6 +8,8 @@ String nachricht = "";
 const byte rxPin = 10;
 const byte txPin = 11;
 
+
+
 SoftwareSerial bluetooth(rxPin, txPin);
 AsyncDelay delay_3s;
 

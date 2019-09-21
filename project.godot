@@ -19,7 +19,7 @@ modules="org/godotengine/godot/GodotBluetooth"
 
 [application]
 
-config/name="BluetoothConsole3"
+config/name="BluetoothConsole"
 run/main_scene="res://root.tscn"
 config/icon="res://icon.png"
 
