@@ -12,49 +12,49 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1272.0
-margin_bottom = 792.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 924.0
-margin_bottom = 792.0
+margin_right = 1572.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ConnectDisconnect" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_right = 924.0
+margin_right = 1572.0
 margin_bottom = 53.0
 text = "Maschine verbinden"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 editor/display_folded = true
 margin_top = 57.0
-margin_right = 924.0
+margin_right = 1572.0
 margin_bottom = 114.0
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 760.0
+margin_right = 1408.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 caret_blink = true
 
 [node name="Senden" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 764.0
-margin_right = 924.0
+margin_left = 1412.0
+margin_right = 1572.0
 margin_bottom = 57.0
 disabled = true
 text = "Senden"
 
 [node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
 margin_top = 118.0
-margin_right = 924.0
-margin_bottom = 792.0
+margin_right = 1572.0
+margin_bottom = 1080.0
 size_flags_vertical = 3
 
 [node name="VBoxFile" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 928.0
-margin_right = 1272.0
-margin_bottom = 792.0
+margin_left = 1576.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_vertical = 3
 
 [node name="OpenFile" type="Button" parent="HBoxContainer/VBoxFile"]
@@ -65,19 +65,19 @@ text = "            File          "
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxFile"]
 margin_top = 57.0
 margin_right = 344.0
-margin_bottom = 735.0
+margin_bottom = 1023.0
 size_flags_vertical = 3
 
 [node name="ItemList" type="ItemList" parent="HBoxContainer/VBoxFile/ScrollContainer"]
 margin_right = 344.0
-margin_bottom = 678.0
+margin_bottom = 966.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxFile"]
-margin_top = 739.0
+margin_top = 1027.0
 margin_right = 344.0
-margin_bottom = 792.0
+margin_bottom = 1080.0
 
 [node name="ButtonP" type="Button" parent="HBoxContainer/VBoxFile/HBoxContainer"]
 margin_right = 170.0
@@ -101,8 +101,8 @@ window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.txt" )
-current_dir = "/home/stalker/Development/GoDot/BluetoothConsole3"
-current_path = "/home/stalker/Development/GoDot/BluetoothConsole3/"
+current_dir = "/home/stalker/Development/GoDot/BluetoothConsole"
+current_path = "/home/stalker/Development/GoDot/BluetoothConsole/"
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ConnectDisconnect" to="." method="_on_ConnectDisconnect_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/Senden" to="." method="_on_Senden_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxFile/OpenFile" to="." method="_on_OpenFile_pressed"]
