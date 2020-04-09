@@ -2,10 +2,12 @@ extends Node
 
 var textEdit
 var fileDialog
+var fileDialogDateiSenden
 var itemList
 var lineEdit
 var btnConnectDisconnect
 var btnSenden
+var btnSendenDatei
 
 func _ready():
 	global.connect("connected", self, "_on_connected")
@@ -16,23 +18,29 @@ func _ready():
 	textEdit.wrap_enabled = true
 	textEdit.set_readonly(true)
 	
+	
 	fileDialog = get_node("FileDialog")
 	fileDialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
+	fileDialogDateiSenden = get_node("FileDialogDateiSenden")
+	fileDialogDateiSenden.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
 	
 	itemList = get_node("HBoxContainer/VBoxFile/ScrollContainer/ItemList")
 	lineEdit = get_node("HBoxContainer/VBoxContainer/HBoxContainer/LineEdit")
 	btnConnectDisconnect = get_node("HBoxContainer/VBoxContainer/ConnectDisconnect")
 	btnSenden = get_node("HBoxContainer/VBoxContainer/HBoxContainer/Senden")
+	btnSendenDatei = get_node("HBoxContainer/VBoxContainer/HBoxContainer/SendenDatei")
 
 
 func _on_disconnected():
 	btnConnectDisconnect.set_text("Maschine verbinden")
 	btnSenden.set_disabled(true);
+	btnSendenDatei.set_disabled(true);
 
 
 func _on_connected():
 	btnConnectDisconnect.text = "Verbindung beenden"
 	btnSenden.set_disabled(false);
+	btnSendenDatei.set_disabled(false);
 
 
 func _on_data_received(data):
@@ -41,7 +49,6 @@ func _on_data_received(data):
 
 
 func _on_ConnectDisconnect_pressed():
-	var a = global
 	if global.bluetooth:
 		global.bluetooth.getPairedDevices(true)
 
@@ -51,6 +58,10 @@ func _on_Senden_pressed():
 	if global.bluetooth:
 		global.bluetooth.sendData("{" + text + "}")
 		lineEdit.set_text("")
+
+
+func _on_SendenDatei_pressed():
+	fileDialogDateiSenden.popup_centered()
 
 
 func _on_OpenFile_pressed():
@@ -63,6 +74,15 @@ func _on_FileDialog_file_selected( path ):
 		itemList.clear()
 		while !file.eof_reached():
 			itemList.add_item(file.get_line())
+
+
+func _on_FileDialogDateiSenden_file_selected(path):	
+	var file = File.new()     
+	if global.bluetooth && file.open(path, File.READ) == 0:
+		var fileInhalt = file.get_as_text()
+		var command = lineEdit.get_text()
+		global.bluetooth.sendData("{" + command + fileInhalt + "}")
+		lineEdit.set_text("")
 
 
 func _on_ButtonN_pressed():
@@ -91,3 +111,7 @@ func selectItem(idx):
 func _on_ItemList_item_selected( index ):
 	var value = itemList.get_item_text(index)
 	lineEdit.set_text(value)
+
+
+
+

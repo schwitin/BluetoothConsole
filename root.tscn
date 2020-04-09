@@ -16,79 +16,87 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 1572.0
+margin_right = 1434.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ConnectDisconnect" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_right = 1572.0
-margin_bottom = 53.0
+margin_right = 1434.0
+margin_bottom = 71.0
 text = "Maschine verbinden"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 57.0
-margin_right = 1572.0
-margin_bottom = 114.0
+margin_top = 75.0
+margin_right = 1434.0
+margin_bottom = 150.0
+
+[node name="SendenDatei" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 220.0
+margin_bottom = 75.0
+disabled = true
+text = "Senden"
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 1408.0
-margin_bottom = 57.0
+margin_left = 224.0
+margin_right = 1210.0
+margin_bottom = 75.0
 size_flags_horizontal = 3
 caret_blink = true
 
 [node name="Senden" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 1412.0
-margin_right = 1572.0
-margin_bottom = 57.0
+margin_left = 1214.0
+margin_right = 1434.0
+margin_bottom = 75.0
 disabled = true
 text = "Senden"
 
 [node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
-margin_top = 118.0
-margin_right = 1572.0
+margin_top = 154.0
+margin_right = 1434.0
 margin_bottom = 1080.0
 size_flags_vertical = 3
+readonly = true
+context_menu_enabled = false
 
 [node name="VBoxFile" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 1576.0
+margin_left = 1438.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 size_flags_vertical = 3
 
 [node name="OpenFile" type="Button" parent="HBoxContainer/VBoxFile"]
-margin_right = 344.0
-margin_bottom = 53.0
+margin_right = 482.0
+margin_bottom = 71.0
 text = "            File          "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxFile"]
-margin_top = 57.0
-margin_right = 344.0
-margin_bottom = 1023.0
+margin_top = 75.0
+margin_right = 482.0
+margin_bottom = 1005.0
 size_flags_vertical = 3
 
 [node name="ItemList" type="ItemList" parent="HBoxContainer/VBoxFile/ScrollContainer"]
-margin_right = 344.0
-margin_bottom = 966.0
+margin_right = 482.0
+margin_bottom = 930.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxFile"]
-margin_top = 1027.0
-margin_right = 344.0
+margin_top = 1009.0
+margin_right = 482.0
 margin_bottom = 1080.0
 
 [node name="ButtonP" type="Button" parent="HBoxContainer/VBoxFile/HBoxContainer"]
-margin_right = 170.0
-margin_bottom = 53.0
+margin_right = 239.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 text = "<--"
 
 [node name="ButtonN" type="Button" parent="HBoxContainer/VBoxFile/HBoxContainer"]
-margin_left = 174.0
-margin_right = 344.0
-margin_bottom = 53.0
+margin_left = 243.0
+margin_right = 482.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 text = "-->"
 
@@ -103,10 +111,24 @@ access = 2
 filters = PoolStringArray( "*.txt" )
 current_dir = "/home/stalker/Development/GoDot/BluetoothConsole"
 current_path = "/home/stalker/Development/GoDot/BluetoothConsole/"
+
+[node name="FileDialogDateiSenden" type="FileDialog" parent="."]
+margin_left = 61.0
+margin_top = 68.0
+margin_right = 1272.0
+margin_bottom = 760.0
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.txt" )
+current_dir = "/home/stalker/Development/GoDot/BluetoothConsole"
+current_path = "/home/stalker/Development/GoDot/BluetoothConsole/"
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ConnectDisconnect" to="." method="_on_ConnectDisconnect_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/SendenDatei" to="." method="_on_SendenDatei_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/Senden" to="." method="_on_Senden_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxFile/OpenFile" to="." method="_on_OpenFile_pressed"]
 [connection signal="item_selected" from="HBoxContainer/VBoxFile/ScrollContainer/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="HBoxContainer/VBoxFile/HBoxContainer/ButtonP" to="." method="_on_ButtonP_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxFile/HBoxContainer/ButtonN" to="." method="_on_ButtonN_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="FileDialogDateiSenden" to="." method="_on_FileDialogDateiSenden_file_selected"]
