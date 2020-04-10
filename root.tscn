@@ -27,6 +27,7 @@ margin_bottom = 71.0
 text = "Maschine verbinden"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+editor/display_folded = true
 margin_top = 75.0
 margin_right = 1434.0
 margin_bottom = 150.0
@@ -51,13 +52,11 @@ margin_bottom = 75.0
 disabled = true
 text = "Senden"
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
+[node name="LogList" type="ItemList" parent="HBoxContainer/VBoxContainer"]
 margin_top = 154.0
 margin_right = 1434.0
 margin_bottom = 1080.0
 size_flags_vertical = 3
-readonly = true
-context_menu_enabled = false
 
 [node name="VBoxFile" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 1438.0

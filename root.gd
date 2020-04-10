@@ -1,6 +1,6 @@
 extends Node
 
-var textEdit
+var logList
 var fileDialog
 var fileDialogDateiSenden
 var itemList
@@ -14,10 +14,7 @@ func _ready():
 	global.connect("disconnected", self, "_on_disconnected")
 	global.connect("data_received", self, "_on_data_received")
 	
-	textEdit = get_node("HBoxContainer/VBoxContainer/TextEdit")
-	textEdit.wrap_enabled = true
-	textEdit.set_readonly(true)
-	
+	logList = get_node("HBoxContainer/VBoxContainer/LogList")	
 	
 	fileDialog = get_node("FileDialog")
 	fileDialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
@@ -44,8 +41,10 @@ func _on_connected():
 
 
 func _on_data_received(data):
-	var text = textEdit.get_text()
-	textEdit.set_text(data + "\n" + text)
+	self.logList.add_item(data, null, false)
+	self.logList.move_item (self.logList.get_item_count()-1, 0)
+	self.logList.set_item_tooltip_enabled(0, false)
+	self.logList.remove_item(20)
 
 
 func _on_ConnectDisconnect_pressed():
