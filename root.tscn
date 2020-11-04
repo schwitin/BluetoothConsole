@@ -27,7 +27,6 @@ margin_bottom = 71.0
 text = "Maschine verbinden"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 75.0
 margin_right = 1434.0
 margin_bottom = 150.0

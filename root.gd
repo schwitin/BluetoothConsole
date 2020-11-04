@@ -55,7 +55,11 @@ func _on_ConnectDisconnect_pressed():
 func _on_Senden_pressed():
 	var text = lineEdit.get_text()
 	if global.bluetooth:
-		global.bluetooth.sendData("{" + text + "}")
+		var text_array = text.split(";", false, 0)
+		global.bluetooth.sendData("{")
+		for item in text_array:
+			global.bluetooth.sendData(item)
+		global.bluetooth.sendData("}")
 		lineEdit.set_text("")
 
 
